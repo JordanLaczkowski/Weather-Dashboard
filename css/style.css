@@ -1,0 +1,27 @@
+* {
+  background-color: whitesmoke;
+}
+
+h1 {
+  background-color: lightskyblue;
+  text-align: center;
+}
+
+#search-button {
+  width: 100px;
+
+  /* need search button to be longer  */
+}
+
+#button-list {
+  display: inline-grid;
+  padding: unset;
+}
+.divider {
+  border-top: 3px solid #bbb;
+  /*fix length of divider*/
+}
+
+.city-button {
+  margin-top: 5px;
+}

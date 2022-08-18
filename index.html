@@ -4,10 +4,68 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body></body>
+
+  <body>
+    <div>
+      <h1>Weather Dashboard</h1>
+      <h2>Search for a City:</h2>
+    </div>
+  
+      <form class="d-flex" role="search">
+        <input
+
+          type="search"
+          placeholder="San Diego"
+          aria-label="Search"
+        />
+        <div>
+        <button
+          id="search-button"
+          class="btn btn-outline-success"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr class="divider">
+  <div>
+  <ul id="button-list">
+    <button class="city-button" aria-setsize="4" aria-posinset="1">Austin</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="2">Chicago</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="3">New York</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="4">Orlando</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="4">San Francisco</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="4">Seattle</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="4">Denver</button>
+    <button class="city-button" aria-setsize="4" aria-posinset="4">Atlanta</button>
+</ul>
+</button>
+</div>
+
+<h1>5-Day Forecast</h1>
+<div class="container">
+  <div id="1" class="day">
+    <div class="date">03/31/2021</div>
+    <div class="temperature">73.72 F</div>
+    <div class="wind">9.53 MPH</div>
+    <div class="humidity">66%</div>
+  </div>
+</div>
+
+<!-- Buttons need to stack  -->
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
   <script src="./js/script.js"></script>
 </html>
