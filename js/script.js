@@ -15,28 +15,31 @@ function getWeather(nameOfCity) {
     "https://api.weatherbit.io/v2.0/forecast/daily?city=" +
     nameOfCity +
     "&units=I" +
-    "&days=5" +
+    "&days=6" +
     "&key=" +
-    fetch(getWeather)
-      .then((response) => response.json())
-      .then((data) => {
-        $("#card-0 .date-0").val(data.data[0].datetime);
-        $("#card-0 .temperature-0").val(data.data[0].temp);
-        $("#card-0 .wind-0").val(data.data[0].wind_spd);
-        $("#card-0 .humidity-0").val(data.data[0].rh);
-        $("#card-0 .uv-index-0").val(data.data[0].uv);
-        console.log(data);
-        for (i = 1; i < data.data.length; i++) {
-          var date = data.data[i].datetime;
-          var temp = data.data[i].temp;
-          var wind = data.data[i].wind_spd;
-          var humidity = data.data[i].rh;
-          $("#card-" + i + " .date-" + i).val(date);
-          $("#card-" + i + " .temperature-" + i).val(temp);
-          $("#card-" + i + " .wind-" + i).val(wind);
-          $("#card-" + i + " .humidity-" + i).val(humidity);
-        }
-      });
+    apiKey;
+  fetch(getWeather)
+    .then((response) => response.json())
+    .then((data) => {
+      $(".date-0").text(data.data[0].datetime);
+      $(".temperature-0").text(data.data[0].temp);
+      $(".wind-0").text(data.data[0].wind_spd);
+      $(".humidity-0").text(data.data[0].rh);
+      $(".uv-index-0").text(data.data[0].uv);
+      console.log(data);
+      for (i = 1; i < data.data.length; i++) {
+        var date = data.data[i].datetime;
+        console.log(date);
+        var temp = data.data[i].temp;
+        var wind = data.data[i].wind_spd;
+        var humidity = data.data[i].rh;
+        var cardDate = "#date-" + i;
+        $(cardDate).text(date);
+        $("#temperature-" + i).text(temp);
+        $("#wind-" + i).text(wind);
+        $("#humidity-" + i).text(humidity);
+      }
+    });
 }
 getWeather(nameOfCity);
 
@@ -44,19 +47,19 @@ $("#search-button").on("click", function (event) {
   event.preventDefault();
   // var textValue = $(event.target).siblings().eq(0).val();
   // console.log($(event.target).siblings().eq(0).val());
-  requestUrl += textValue;
+
+  console.log("click");
   var array = [];
-  getToken()
-    .then((response) =>
-      fetch(requestUrl, {
-        headers: { Authorization: response },
-      })
-    )
-    .then((response) => response.json())
-    .then(function (data) {});
+  var cityInput = $('input[name="city-input"]');
+  console.log(cityInput.val());
+  nameOfCity = cityInput.val();
+  getWeather();
+  //still need this to equal the new city that was entered
+  //arrray to gain new info -- push to the array to next name
+  //array at end (maybe before getWeather - then do the json and have it set to local storage (web apis 21 &22))
 });
 
 /* 
-Need API key to give back data
-HOw do I link the values using jQuery 
+
+Local storage for recent search button 
 */
