@@ -49,7 +49,6 @@ function getWeather(nameOfCity) {
       $(".date-0").text(currentDate);
       $("#current-city").text(nameOfCity + " " + currentDate);
 
-      //console.log(currentIcon);
       document.getElementById("icon-0").setAttribute("src", currentIcon);
       $(".temperature-0").text("Temp: " + data.data[0].temp + " \u00B0" + "F");
       $(".wind-0").text("Wind: " + data.data[0].wind_spd + " MPH");
@@ -76,24 +75,23 @@ function getWeather(nameOfCity) {
 }
 
 function uvIndexCompare(uvIndex) {
-  //console.log("UV INDEX: " + uvIndex);
-  if (uvIndex > 0.5) {
+  if (uvIndex <= 2) {
     $("#uv-index-0").addClass("green");
-  } else if (uvIndex <= 0.5) {
+  } else if (uvIndex >= 5) {
+    $("uv-index-0").addClass("yellow");
+  } else if (uvIndex <= 10) {
     $("uv-index-0").addClass("red");
   }
 }
+
 getWeather(nameOfCity);
 
 $("#search-button").on("click", function (event) {
   event.preventDefault();
-  // var textValue = $(event.target).siblings().eq(0).val();
-  // console.log($(event.target).siblings().eq(0).val());
-
-  //console.log("click");
+  var textValue = $(event.target).siblings().eq(0).val();
   var array = [];
   var cityInput = $('input[name="city-input"]');
-  //console.log(cityInput.val());
+
   nameOfCity = cityInput.val();
   let newButton = document.createElement("button");
   newButton.setAttribute("id", nameOfCity);
