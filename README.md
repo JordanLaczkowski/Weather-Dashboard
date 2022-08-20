@@ -10,4 +10,5 @@ This Weather Dashboard will also keep track of past city searches even after the
 
 Enjoy!
 
+<img width="1433" alt="WeatherDashboard" src="https://user-images.githubusercontent.com/109110372/185769333-edbc8495-8340-4eac-9dcf-adfcd9af0df9.png">
 
