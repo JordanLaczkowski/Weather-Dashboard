@@ -10,13 +10,14 @@ var getLatAndLong =
   "&appid=" +
   apiKey;
 
+//stores local storage for perviously searched cities
 function loadPreviousCities() {
   for (var i = 0; i < localStorage.length; i++) {
     var newButton = localStorage.key(i);
     createButton(newButton);
   }
 }
-
+//tells which icon to use
 function getIcon(clouds, precip) {
   if (clouds > 50 && precip > 0.2) {
     return "./assets/Rainy.png";
@@ -48,20 +49,20 @@ function getWeather(nameOfCity) {
       $(".date-0").text(currentDate);
       $("#current-city").text(nameOfCity + " " + currentDate);
 
-      console.log(currentIcon);
-      //document.getElementById("icon-0").setAttribute("href", currentIcon);
+      //console.log(currentIcon);
+      document.getElementById("icon-0").setAttribute("src", currentIcon);
       $(".temperature-0").text("Temp: " + data.data[0].temp + " \u00B0" + "F");
       $(".wind-0").text("Wind: " + data.data[0].wind_spd + " MPH");
       $(".humidity-0").text("Humidity: " + data.data[0].rh + "%");
-      $(".uv-index-0").text("UV Index: " + data.data[0].uv);
-      console.log(data);
+      $("#uv-index-0").text("UV Index: " + data.data[0].uv);
+      uvIndexCompare(data.data[0].uv);
       for (i = 1; i < data.data.length; i++) {
         var dateTime = new Date(data.data[i].datetime);
         var date = dateTime.toLocaleDateString();
         var clouds = data.data[i].clouds_mid;
         var precip = data.data[i].precip;
-        var currentIcon = getIcon(clouds, precip);
-        //document.getElementById("icon-" + i).setAttribute("href", icon);
+        var icon = getIcon(clouds, precip);
+        document.getElementById("icon-" + i).setAttribute("src", icon);
         var temp = "Temp: " + data.data[i].temp + " \u00B0" + "F";
         var wind = "Wind: " + data.data[i].wind_spd + " MPH";
         var humidity = "Humidity: " + data.data[i].rh + "%";
@@ -73,6 +74,15 @@ function getWeather(nameOfCity) {
       }
     });
 }
+
+function uvIndexCompare(uvIndex) {
+  //console.log("UV INDEX: " + uvIndex);
+  if (uvIndex > 0.5) {
+    $("#uv-index-0").addClass("green");
+  } else if (uvIndex <= 0.5) {
+    $("uv-index-0").addClass("red");
+  }
+}
 getWeather(nameOfCity);
 
 $("#search-button").on("click", function (event) {
@@ -80,10 +90,10 @@ $("#search-button").on("click", function (event) {
   // var textValue = $(event.target).siblings().eq(0).val();
   // console.log($(event.target).siblings().eq(0).val());
 
-  console.log("click");
+  //console.log("click");
   var array = [];
   var cityInput = $('input[name="city-input"]');
-  console.log(cityInput.val());
+  //console.log(cityInput.val());
   nameOfCity = cityInput.val();
   let newButton = document.createElement("button");
   newButton.setAttribute("id", nameOfCity);
@@ -92,10 +102,6 @@ $("#search-button").on("click", function (event) {
   document.getElementById("button-list").appendChild(newButton);
   localStorage.setItem(nameOfCity, nameOfCity);
   getWeather(nameOfCity);
-
-  //still need this to equal the new city that was entered
-  //arrray to gain new info -- push to the array to next name
-  //array at end (maybe before getWeather - then do the json and have it set to local storage (web apis 21 &22))
 });
 
 function cityClicked(event) {
@@ -110,11 +116,3 @@ function createButton(name) {
   newButton.innerHTML = name;
   document.getElementById("button-list").appendChild(newButton);
 }
-
-/* 
-
-Local storage for recent search button 
-uv index on "today"
-icons
-
-*/
