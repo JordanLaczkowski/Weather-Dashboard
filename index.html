@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div>
+      <h1>Weather Dashboard</h1>
+      <h3>Search for a City:</h3>
+    </div>
+  <div>
+      <form class="d-flex" role="search">
+        <input
+          name="city-input"
+          type="search"
+          placeholder="San Diego"
+          aria-label="Search"
+        />
+        <div>
+        <button
+          id="search-button"
+          class="btn btn-outline-success"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+   
+    <ul id="button-list">
+
+    </ul>
+    <h2 id="current-city"></h2>
+  </div>
+
+  <div id="card-0" class="current-day">
+    <div id="card-0"class="date-0"></div>
+    <!-- tells where the icon should go -->
+    <img id="icon-0" class="icon" />
+    <div class="temperature-0"></div>
+    <div class="wind-0"></div>
+    <div class="humidity-0"></div>
+    <div id="uv-index-0"></div>
+  </div>
+  <hr class="divider">
+
+
+<h3>5-Day Forecast:</h3>
+<div class="container">
+  <div class="forecast">
+  <div id="card-1" class="day">
+    <div id="date-1"></div>
+    <img id="icon-1" class="icon"/>
+    <div id="temperature-1"></div>
+    <div id="wind-1"></div>
+    <div id="humidity-1"></div>
+  </div>
+  <div id="card-2" class="day">
+    <div id="date-2"></div>
+    <img id="icon-2" class="icon"/>
+    <div id="temperature-2"></div>
+    <div id="wind-2"></div>
+    <div id="humidity-2"></div>
+  </div>
+  <div id="card-3" class="day">
+    <div id="date-3"></div>
+    <img id="icon-3" class="icon"/>
+    <div id="temperature-3"></div>
+    <div id="wind-3"></div>
+    <div id="humidity-3"></div>
+  </div>
+  <div id="card-4" class="day">
+    <div id="date-4"></div>
+    <img id="icon-4" class="icon"/>
+    <div id="temperature-4"></div>
+    <div id="wind-4"></div>
+    <div id="humidity-4"></div>
+  </div>
+  <div id="card-5" class="day">
+    <div id="date-5"></div>
+    <img id="icon-5" class="icon"/>
+    <div id="temperature-5"></div>
+    <div id="wind-5"></div>
+    <div id="humidity-5"></div>
+  </div>
+</div>
+</div>
+
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+  <script src="./js/script.js"></script>
+</html>
